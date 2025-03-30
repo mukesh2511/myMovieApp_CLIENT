@@ -13,8 +13,14 @@ import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { useMovies } from "../context/movieContext";
 import uploadCloudinary from "../utils/uploadCloudinary";
+import { useAuth } from "../context/authContext";
 
 const EditMovie = () => {
+  const { user } = useAuth();
+  if (user?.isAdmin === false || !user) {
+    toast.error("You are not authorized to edit movies.");
+    navigate("/");
+  }
   const { updateMovie } = useMovies();
   const { id } = useParams(); // Get movie ID from URL
   //console.log(id);

@@ -19,7 +19,7 @@ const addMovie = () => {
   const { addMovie } = useMovies();
   const navigate = useNavigate();
   const { user } = useAuth();
-  if (user?.isAdmin === false) {
+  if (user?.isAdmin === false || !user) {
     toast.error("You are not authorized to add movies.");
     navigate("/");
   }
