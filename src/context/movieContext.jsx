@@ -32,7 +32,9 @@ export const MovieProvider = ({ children }) => {
   // Add a New Movie (CREATE)
   const addMovie = async (movieData) => {
     try {
-      const { data } = await axios.post(`${BASE_URL}/addmovie`, movieData);
+      const { data } = await axios.post(`${BASE_URL}/addmovie`, movieData, {
+        withCredentials: true,
+      });
       //console.log({ "after create": data });
       setMovies([...movies, data]);
       toast.success("Movie added successfully!");
@@ -48,7 +50,8 @@ export const MovieProvider = ({ children }) => {
     try {
       const { data } = await axios.put(
         `${BASE_URL}/editmovie/${id}`,
-        updatedData
+        updatedData,
+        { withCredentials: true }
       );
       setMovies(movies.map((movie) => (movie._id === id ? data : movie)));
       toast.success("Movie updated successfully!");
@@ -61,7 +64,9 @@ export const MovieProvider = ({ children }) => {
   // Delete a Movie (DELETE)
   const deleteMovie = async (id) => {
     try {
-      await axios.delete(`${BASE_URL}/deletemovie/${id}`);
+      await axios.delete(`${BASE_URL}/deletemovie/${id}`, {
+        withCredentials: true,
+      });
       setMovies(movies.filter((movie) => movie._id !== id));
       toast.success("Movie deleted successfully!");
     } catch (error) {
