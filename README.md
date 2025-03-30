@@ -15,28 +15,28 @@ CRUD operation on movies, user based access control, sort, search, and filter mo
 
 - Home page
 
-![Screenshot 1](https://drive.google.com/file/d/1iRIf8zNx84PcIYZX2apL3tJlhLVni9ru/view?usp=sharing)
+![Screenshot 1](https://github.com/mukesh2511/myMovieApp_CLIENT/blob/main/public/home.png)
 
 
 - View Movie Page
 
-![Screenshot 2](https://drive.google.com/file/d/1yCW42Xv3HIiEW_kL97fEsYu7gsbyv3pp/view?usp=sharing)
+![Screenshot 2](https://github.com/mukesh2511/myMovieApp_CLIENT/blob/main/public/viewMovie.png)
 
 
 - Add Movie page
 
-![Screenshot 5](https://drive.google.com/file/d/1ypnL_nB6iToPoQZTEAfoaUG9vUv7av5i/view?usp=sharing)
+![Screenshot 5](https://github.com/mukesh2511/myMovieApp_CLIENT/blob/main/public/addMovie.png)
 
 
 - Edit Movie Page
 
-![Screenshot 7](https://drive.google.com/file/d/1daE2vmwWRzMUFIW1uZOqZZ30Vye-mnuD/view?usp=sharing)
+![Screenshot 7](https://github.com/mukesh2511/myMovieApp_CLIENT/blob/main/public/editmovie.png)
 
 - Register Page
 
-![Screenshot 7](https://drive.google.com/file/d/1i-h38WQGMzfd1fxH1_neR03eq93Uv-Da/view?usp=sharing)
+![Screenshot 7](https://github.com/mukesh2511/myMovieApp_CLIENT/blob/main/public/register.png)
 
 - login page
 
-![Screenshot 7](https://drive.google.com/file/d/12ZQFdV2cIzu91Gmd3Cf6Nn8poJBkBIvY/view?usp=sharing)
+![Screenshot 7](https://github.com/mukesh2511/myMovieApp_CLIENT/blob/main/public/login.png)
 
