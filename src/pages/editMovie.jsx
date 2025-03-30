@@ -17,6 +17,7 @@ import { useAuth } from "../context/authContext";
 
 const EditMovie = () => {
   const { user } = useAuth();
+  const [imageUploading, setImageUploading] = useState(false);
   if (user?.isAdmin === false || !user) {
     toast.error("You are not authorized to edit movies.");
     navigate("/");
@@ -78,6 +79,7 @@ const EditMovie = () => {
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
     setSelectedFile(file);
+    setImageUploading(true);
 
     const formData = new FormData();
     formData.append("poster", file);
@@ -108,6 +110,8 @@ const EditMovie = () => {
     } catch (error) {
       console.error("Error uploading image:", error);
       alert("Failed to upload image.");
+    } finally {
+      setImageUploading(false); // Stop loading
     }
   };
 
@@ -233,7 +237,11 @@ const EditMovie = () => {
           </Grid>
           <Box>
             <Button variant="contained" component="label" sx={{ mb: 2 }}>
-              Change Poster
+              {imageUploading ? (
+                <CircularProgress size={24} sx={{ color: "white" }} />
+              ) : (
+                "Change Poster"
+              )}
               <input
                 type="file"
                 accept="image/*"

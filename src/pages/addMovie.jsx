@@ -19,6 +19,7 @@ const addMovie = () => {
   const { addMovie } = useMovies();
   const navigate = useNavigate();
   const { user } = useAuth();
+
   if (user?.isAdmin === false || !user) {
     toast.error("You are not authorized to add movies.");
     navigate("/");
@@ -35,6 +36,7 @@ const addMovie = () => {
   });
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [imageUploading, setImageUploading] = useState(false);
   //console.log({ movie });
 
   // useEffect(() => {
@@ -76,6 +78,7 @@ const addMovie = () => {
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
     setSelectedFile(file);
+    setImageUploading(true);
 
     const formData = new FormData();
     formData.append("poster", file);
@@ -105,6 +108,8 @@ const addMovie = () => {
     } catch (error) {
       console.error("Error uploading image:", error);
       alert("Failed to upload image.");
+    } finally {
+      setImageUploading(false); // Stop loading
     }
   };
 
@@ -232,7 +237,11 @@ const addMovie = () => {
           </Grid>
           <Box>
             <Button variant="contained" component="label" sx={{ mb: 2 }}>
-              Add Poster
+              {imageUploading ? (
+                <CircularProgress size={24} sx={{ color: "white" }} />
+              ) : (
+                "Change Poster"
+              )}
               <input
                 type="file"
                 accept="image/*"
