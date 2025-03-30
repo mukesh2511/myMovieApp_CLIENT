@@ -169,9 +169,13 @@ const Signup = () => {
           </Box>
           <Typography variant="body2" sx={{ mt: 2 }}>
             Already have an account?{" "}
-            <a href="/login" style={{ color: "#ff9800" }}>
+            <Typography
+              component="span" // Fix: Change to span
+              sx={{ color: "#ff9800", cursor: "pointer" }}
+              onClick={() => navigate("/login")}
+            >
               Login
-            </a>
+            </Typography>
           </Typography>
         </Paper>
       </Container>
