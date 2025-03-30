@@ -116,13 +116,18 @@ const HomePage = () => {
                   component="img"
                   height="250"
                   image={
-                    movie.poster_path.startsWith("public")
-                      ? `https://mymovieapp-api.onrender.com/${movie.poster_path.replace(
-                          /\\/g,
-                          "/"
-                        )}` // Local image
+                    movie.poster_path.startsWith("http")
+                      ? `${movie.poster_path}` // Local image
                       : `https://image.tmdb.org/t/p/w500${movie.poster_path}`
                   }
+                  // image={
+                  //   movie.poster_path.startsWith("public")
+                  //     ? `https://mymovieapp-api.onrender.com/${movie.poster_path.replace(
+                  //         /\\/g,
+                  //         "/"
+                  //       )}` // Local image
+                  //     : `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                  // }
                   alt={movie.title}
                 />
                 <CardContent>

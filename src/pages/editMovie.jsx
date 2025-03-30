@@ -12,6 +12,7 @@ import {
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { useMovies } from "../context/movieContext";
+import uploadCloudinary from "../utils/uploadCloudinary";
 
 const EditMovie = () => {
   const { updateMovie } = useMovies();
@@ -82,17 +83,19 @@ const EditMovie = () => {
     );
 
     try {
-      const { data } = await axios.post(
-        "https://mymovieapp-api.onrender.com/api/movie/upload",
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      // const { data } = await axios.post(
+      //   "https://mymovieapp-api.onrender.com/api/movie/upload",
+      //   formData,
+      //   {
+      //     headers: { "Content-Type": "multipart/form-data" },
+      //   }
+      // );
+      const cover = await uploadCloudinary(file);
+      console.log(cover);
 
       setMovie((prev) => ({
         ...prev,
-        poster_path: data.imageUrl, // Save the uploaded image URL
+        poster_path: cover, // Save the uploaded image URL
       }));
 
       alert("Image uploaded successfully!");
@@ -200,13 +203,18 @@ const EditMovie = () => {
             <Box
               component="img"
               src={
-                movie.poster_path.startsWith("public")
-                  ? `https://mymovieapp-api.onrender.com/${movie.poster_path.replace(
-                      /\\/g,
-                      "/"
-                    )}` // Local image
+                movie.poster_path.startsWith("http")
+                  ? `${movie.poster_path}` // Local image
                   : `https://image.tmdb.org/t/p/w500${movie.poster_path}` // TMDB image
               }
+              // src={
+              //   movie.poster_path.startsWith("public")
+              //     ? `https://mymovieapp-api.onrender.com/${movie.poster_path.replace(
+              //         /\\/g,
+              //         "/"
+              //       )}` // Local image
+              //     : `https://image.tmdb.org/t/p/w500${movie.poster_path}` // TMDB image
+              // }
               alt="Movie Poster"
               sx={{
                 width: "100%",

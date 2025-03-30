@@ -131,12 +131,17 @@ const ViewMovie = () => {
         >
           <Box
             component="img"
+            // src={
+            //   movie.poster_path.startsWith("public")
+            //     ? `https://mymovieapp-api.onrender.com/${movie.poster_path.replace(
+            //         /\\/g,
+            //         "/"
+            //       )}` // Local image
+            //     : `https://image.tmdb.org/t/p/w500${movie.poster_path}` // TMDB image
+            // }
             src={
-              movie.poster_path.startsWith("public")
-                ? `https://mymovieapp-api.onrender.com/${movie.poster_path.replace(
-                    /\\/g,
-                    "/"
-                  )}` // Local image
+              movie.poster_path.startsWith("http")
+                ? `${movie.poster_path}` // Local image
                 : `https://image.tmdb.org/t/p/w500${movie.poster_path}` // TMDB image
             }
             alt={movie.title}
